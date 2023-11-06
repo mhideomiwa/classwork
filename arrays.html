@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+<button id="btnShow" onclick="show();">Click Me</button>
+<br>
+<p id="output"></p>
+<script>
+    let names = [];
+    let output;
+    let menu = parseInt(prompt("1 - add to end\n2 - Remove from end\n3 - Add to begin\n4 - Remove from begin\n5 - Exit"));
+
+    function show() {
+        let menu = parseInt(prompt("1 - add to end\n2 - Remove from end\n3 - Add to begin\n4 - Remove from begin\n5 - Exit"));
+        let name;
+
+        while (menu !== 5) {
+            if (menu === 1) {
+                names.push(prompt("Enter a name:"))
+                menu = parseInt(prompt("1 - add to end\n2 - Remove from end\n3 - Add to begin\n4 - Remove from begin\n5 - Exit"));
+            } else if (menu === 2) {
+                names.pop()
+                menu = parseInt(prompt("1 - add to end\n2 - Remove from end\n3 - Add to begin\n4 - Remove from begin\n5 - Exit"));
+            } else if (menu === 3) {
+                names.unshift(prompt("Enter a name:"))
+                menu = parseInt(prompt("1 - add to end\n2 - Remove from end\n3 - Add to begin\n4 - Remove from begin\n5 - Exit"));
+            } else if (menu === 4) {
+                names.shift()
+                menu = parseInt(prompt("1 - add to end\n2 - Remove from end\n3 - Add to begin\n4 - Remove from begin\n5 - Exit"));
+            }
+        }
+
+        let asNew = [];
+
+        for (let i = 0; i < names.length; i++) {
+            console.log(names[i]);
+        }
+
+        while (names.length > 0) {
+            console.log(names[0]);
+            asNew.push(names.shift());
+        }
+
+        let sOutput = '';
+        for (let i = 0; i < asNew.length; i++) {
+            console.log(asNew[i]);
+            sOutput = sOutput + asNew[i] + ' ';
+        }
+
+        document.getElementById('output').innerHTML = sOutput;
+    }
+</script>
+</body>
+</html>

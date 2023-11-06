@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p name="breakfast" id="breakfast">
+
+</p>
+
+<script>
+    let aBreakfast = [["spam", 12], ["bacon", 5], ["grits", 2] ];
+    let sOutput = ""
+
+    for (let i = 0; i < aBreakfast.length; i++) {
+        sOutput = sOutput + ' ' + aBreakfast[i][0] + ' ' + aBreakfast[i][1]
+    }
+
+    sOutput = "";
+
+    for (let i = 0; i < aBreakfast.length; i++) {
+        for (let k = 0; k < aBreakfast[i].length; k++) {
+            sOutput = sOutput + ' ' + aBreakfast[i][k]
+        }
+    }
+
+    sOutput="";
+
+    aBreakfast.forEach(item => {
+        sOutput = sOutput + ' 0 '
+    })
+
+    document.getElementById("breakfast").innerHTML = sOutput;
+</script>
+</body>
+</html>

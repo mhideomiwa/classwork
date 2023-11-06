@@ -1,0 +1,75 @@
+<!--Matthew Miwa-->
+<!--Section 3-->
+<!--Program takes an input of a team name and number of games.  Then generates end of season scores and record while calculating a percentage of wins.  This information
+is displayed on the HTML page-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="/ruxitagentjs_ICA2NVfqru_10275230919171419.js" data-dtconfig="rid=RID_-1476085702|rpid=543517154|domain=byu.edu|reportUrl=https://bf19966hyx.bf.dynatrace.com/bf|app=718d108ceb0c6349|cors=1|featureHash=ICA2NVfqru|vcv=2|rdnt=1|uxrgce=1|bp=3|cuc=lg366a9h|mel=100000|dpvc=1|ssv=4|lastModification=1696435881384|tp=500,50,0,1|agentUri=/ruxitagentjs_ICA2NVfqru_10275230919171419.js"></script><script>
+            function playGame()
+            {
+                var numGames = parseInt(document.getElementById("games").value);
+                var myTeam = document.getElementById("teamName").value;
+                var output = "";
+                let wins = 0;
+                let losses = 0;
+
+                //This is where you will put your code
+
+                //Build the data to display and assign it to the output variable
+                //For example: output = output + myTeam + " played " + numGames + " games<br>Their record is 25-0";
+                //NOTE: You have to use the <br> to go to a new line instead of \n because you are writing HTML
+
+                //Math
+                //New array for all scores and variable for win percentage
+                let winPct
+                let teamScores = [];
+                for(let i = 0; i < numGames; i++) {
+                    //declare scores
+                    let score1
+                    let score2
+
+                    //Get initial scores and protect against ties
+                    do {
+                        score1 = Math.floor(Math.random() * 101)
+                        score2 = Math.floor(Math.random() * 101)
+                    }
+                    while (score1 === score2)
+
+                    //Add text to array
+                    if (score1 > score2) {
+                        teamScores.push(myTeam + ": " + score1 + "-" + score2 + " and Wins" + '<br/>')
+                        wins++
+                    }
+                    else {
+                        teamScores.push(myTeam + ": " + score1 + "-" + score2 + " and Loses" + '<br/>')
+                        losses++
+                    }
+                }
+
+                //calculate win percentage
+                winPct = Math.round(wins/numGames * 100)
+
+                //Add final score numbers to teamScores array
+                teamScores.push('<br/><br/>' + myTeam + ' record is ' + wins + '-' + losses + ' with a winning pct of ' + winPct + '%')
+
+
+                //Outputs
+                output = teamScores.join('\n')
+
+                //Assign the contents of the variable output to the html tag outputGames
+                document.getElementById("outputGames").innerHTML = output;
+            }
+        </script>
+
+        <title>
+            Welcome to March Madness
+        </title>
+    </head>
+    <body>
+        Enter your team name: <input type="text" name="teamName" id="teamName"><br><br>
+        Number of games: <input type="text" name="games" id="games"><br><br>
+        <button type="button" onclick="playGame()">Start Season</button><br>
+        <p id="outputGames"></p>
+    </body>
+</html>

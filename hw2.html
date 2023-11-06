@@ -1,0 +1,71 @@
+<!--Matthew Miwa-->
+<!--Section 3-->
+<!--Homework 2-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework2</title>
+</head>
+<body>
+
+  <script>
+    //Constants about BMI
+    const underWeight = 18.5;
+    const overWeight = 25;
+    const obese = 30;
+
+    //Variables for math
+    let heightFt;
+    let heightIn;
+    let heightTotal;
+    let weight;
+    let bmi;
+
+    //Inputs
+    do{
+      heightFt = parseInt(prompt("Please input your height in feet"))
+    }while(isNaN(heightFt));
+    do{
+      heightIn = parseInt(prompt("Please input your height in inches"))
+    }while(isNaN(heightIn));
+    do{
+      weight = parseInt(prompt("Please input your weight in pounds"))
+    }while(isNaN(weight));
+
+    //Get height total
+    heightTotal = (heightFt * 12) + heightIn;
+    //Get BMI
+    bmi = (weight / heightTotal / heightTotal) * 703;
+
+    //For Debugging
+    // alert(bmi)
+
+    //Give correct BMI assessment: Under Weight, Normal Weight, Over Weight, Obese
+    if(bmi < underWeight) {
+      alert("You are under weight");
+    }
+    else if(bmi >= underWeight && bmi < overWeight){
+      alert("You are normal weight");
+    }
+    else if(bmi >= overWeight && bmi < obese){
+      alert("You are over weight");
+    }
+    else if(bmi > obese){
+      alert("you are obese");
+    }
+
+    //Display health tips
+    alert(
+        "Tips for better health:\n" +
+        "Maintain a Healthy Weight\n" + "\n" +
+        "Increase Physical Activity\n" + "\n" +
+        "Eat a Heart-Healthy Diet\n" + "\n" +
+        "Know and Control Your Heart Health Numbers"
+    )
+
+  </script>
+
+</body>
+</html>

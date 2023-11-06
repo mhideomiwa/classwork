@@ -1,0 +1,61 @@
+<!--Matthew Miwa-->
+<!--Section 3-->
+<!--Program uses random numbers to generate scores for BYU vs Gonazaga Womens Basketball Games and declares a winner or if it is a tie game-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework3</title>
+</head>
+<body>
+<script>
+
+
+  //Matthew Miwa
+
+  //Section 3
+
+  /* Program uses random numbers to
+   generate scores for BYU vs Gonazaga
+   Women's Basketball Games and declares
+   a winner or if it is a tie game
+
+  */
+
+  //declare your variables
+
+  //insert your code below to declare variables
+  let finalScore
+  let myScore
+  let opponentScore
+
+  myScore = Math.floor(Math.random() * 101);
+  opponentScore = Math.floor(Math.random() * 101);
+
+  //insert your code below to determine who wins
+
+
+
+  //display the results using an alert box
+  //Final Score Text Generator
+
+  if (myScore > opponentScore) {
+    finalScore = "BYU Wins"
+  }
+  else if(opponentScore > myScore) {
+    finalScore = "Gonzaga Wins"
+  }
+  else {
+    finalScore = "Tie game"
+  }
+
+  //Scores alert
+  alert("BYU " + myScore + "\n" + "Gonzaga " + opponentScore + "\n\n" + finalScore)
+
+
+
+
+</script>
+</body>
+</html>

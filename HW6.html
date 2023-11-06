@@ -1,0 +1,66 @@
+<!--Matthew Miwa-->
+<!--Section 3-->
+<!--Homework 5 - Program gets how many teams, and names for each team.  Then using random numbers, the program generates scores and-->
+<!--displays an end of season record for all teams.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 5</title>
+    <button onclick="getNumTeams();">BUTTON</button>
+</head>
+<body>
+<script>
+    //Variables for number of teams, and arrays for team names and scores
+    let numTeams;
+    let teamNames = [];
+    let scores = [];
+2
+    function getNumTeams(){
+        //Get number of teams
+        numTeams =parseInt(prompt("How many teams?"))
+        //Check number to assure it is valid
+        if(isNaN(numTeams) || numTeams < 0) {
+            alert("No teams to display")
+        }
+        //Function for the rest of the
+        else {
+            finalScores()
+        }
+    }
+
+
+    function finalScores() {
+        //Collects all team names and generates scores
+        let topTeam = 0;
+        for(let i = 0; i < numTeams; i++) {
+            teamNames.push(prompt("What is team " + (i+1)
+                + "'s name?"))
+            scores.push(Math.floor(Math.random() * 26))
+        }
+
+        for(let j = 0; j < teamNames.length-1; j++) {
+            if (scores[j] > scores[topTeam]) {
+                topTeam = j;
+            }
+        }
+
+        //Display top team
+        alert(teamNames[topTeam] + " had the most wins with a record of " + scores[topTeam] + " - " + 25 - scores[topTeam]);
+
+        //Create new array with scores to display
+        let teamScores = [];
+        for(let k = 0; k < teamNames.length-1; k++) {
+            teamScores.push(teamNames[k] + scores[k] + " - " + 25 - scores[k])
+        }
+
+        //Display all team scores
+        alert(teamScores.join('\n'))
+
+    }
+
+
+</script>
+</body>
+</html>

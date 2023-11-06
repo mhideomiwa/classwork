@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <label for="first">Enter First Name: </label>
+    <input type="text" id="first">
+    <br><br>
+    <label for="last">Enter Last Name:</label>
+    <input type="text" id="last">
+    <br><br>
+    <button onclick="create()">Create Student</button>
+    <button onclick="display()">Print Students</button>
+    <p id="output"></p>
+
+<script>
+    class Student {
+        constructor() {
+            this.first_name = "";
+            this.last_name = "";
+        }
+    }
+
+    let aStudents = [];
+
+    function Create() {
+        let oStudent = new Student();
+
+        oStudent.first_name = document.getElementById("first").value;
+        oStudent.last_name = document.getElementById("last").value;
+
+        aStudents.push(oStudent);
+    }
+
+    function display() {
+        let sOutput = "";
+        for(let i = 0; i < aStudents.length; i++) {
+            sOutput = sOutput + aStudents[i].first_name + " " + aStudents[i].last_name + "<br>";
+        }
+
+        document.getElementById("output").innerHTML = sOutput
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InClass</title>
+</head>
+<body>
+    <script>
+        //main bit to run game
+        let ageCheck
+        let playAgain = true;
+
+        ageCheck = ageTest();
+        if(ageCheck === false){
+            alert("Sorry, you must be 18 to play")
+        }
+        else{
+            while(playAgain === true){
+                playAgain = game();
+            }
+        }
+
+
+        //Get Name and test age
+        function ageTest() {
+            let firstName;
+            let lastName;
+            let age;
+
+            //Get Name and Age
+            firstName = prompt("What is your first name?")
+            lastName = prompt("What is your last name?")
+            age = prompt("How old are you?")
+
+            //test age
+            if(age < 18) {
+                return false
+            }
+
+            else {
+                return true
+            }
+        }
+
+        function game() {
+            // Number to check against
+            let num = Math.floor(Math.random() * 19) + 1;
+            // Guess number
+            let guess;
+            // Game workings
+
+            do {
+                guess = prompt("Please enter a guess between 1 and 20");
+                if (parseInt(guess) > num) {
+                    alert("Too High");
+                } else if (parseInt(guess) < num) {
+                    alert("Too Low");
+                }
+            } while (parseInt(guess) !== num);
+
+            // Finish game and prompt for play again
+            alert("You won! Yay!");
+            let again = '';
+            while (again !== 'Y' && again !== 'N') {
+                again = prompt("Would you like to play again? (Y/N)").toUpperCase();
+            }
+            return again === 'Y';
+        }
+
+
+    </script>
+</body>
+</html>

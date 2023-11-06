@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<label>Enter NetID:</label>
+<input type="text" id="netid">
+<br>
+<br>
+<label>Enter First Name:</label>
+<input type="text" id="first">
+<br>
+<br>
+<label>Enter Last Name:</label>
+<input type="text" id="last">
+<br>
+<br>
+<button onclick="play()">Create</button>
+<button onclick="display()">Print</button>
+<br>
+<br>
+<fieldset style="width:0px">
+    <legend>Courses</legend>
+    <label>Enter Number:</label>
+    <input type="text" id="course_num">
+    <br>
+    <br>
+    <label>Enter Name:</label>
+    <input type="text" id="course_name">
+    <br>
+    <br>
+    <button onclick="addCourse()">Add Course</button>
+</fieldset>
+<br>
+<br>
+<p id="output"></p>
+
+<script>
+
+    class Course {
+        constructor(num, name) {
+            this.course_num = num;
+            this.course_name = name;
+        }
+    }
+
+    class Person {
+        constructor(fname, lname) {
+            this.first_name = fname
+            this.last_name = lname
+        }
+    }
+
+    class Student extends Person{
+        constructor(id, fname, lname) {
+            super(fname, lname);
+            this.netid = id;
+            this.courses = [];
+        }
+    }
+
+    let lstStudents = [];
+
+    function play() {
+        let sId = document.getElementById("netid").value;
+        let sFirst = document.getElementById("first").value;
+        let sLast = document.getElementById("last").value;
+
+        let oStudent = new Student(sId, sFirst, sLast);
+
+        lstStudents.push(oStudent);
+
+        document.getElementById("netid").value = '';
+        document.getElementById("first").value = '';
+        document.getElementById("last").value = '';
+        document.getElementById('netid').focus();
+    }
+
+    function addCourse() {
+
+        if (lstStudents.length > 0) {
+            let sNum = document.getElementById("course_num").value;
+            let sName = document.getElementById("course_name").value;
+            let oCourse = new Course(sNum, sName);
+
+            lstStudents[lstStudents.length - 1].courses.push(oCourse);
+
+            document.getElementById("course_num").value = '';
+            document.getElementById("course_name").value = '';
+            document.getElementById("course_num").focus();
+        }
+
+    }
+
+    function display() {
+        let sOutput = '';
+
+        for (let i = 0; i < lstStudents.length; i++) {
+            sOutput = sOutput + lstStudents[i].netid + ' ' +
+                lstStudents[i].first_name + ' ' +
+                lstStudents[i].last_name + '<br>';
+            for (let k = 0; k < lstStudents[i].courses.length; k++) {
+                sOutput = sOutput + 'Courses: ' + lstStudents[i].courses[k].course_name + '<br>'
+            }
+        }
+
+        document.getElementById('output').innerHTML = sOutput;
+    }
+</script>
+</body>
+</html>
